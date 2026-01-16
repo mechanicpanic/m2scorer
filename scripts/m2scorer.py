@@ -83,16 +83,16 @@ def load_annotation(gold_file):
 
 
 def print_usage():
-    print >> sys.stderr, "Usage: m2scorer.py [OPTIONS] proposed_sentences gold_source"
-    print >> sys.stderr, "where"
-    print >> sys.stderr, "  proposed_sentences   -   system output, sentence per line"
-    print >> sys.stderr, "  source_gold          -   source sentences with gold token edits"
-    print >> sys.stderr, "OPTIONS"
-    print >> sys.stderr, "  -v    --verbose                   -  print verbose output"
-    print >> sys.stderr, "        --very_verbose              -  print lots of verbose output"
-    print >> sys.stderr, "        --max_unchanged_words N     -  Maximum unchanged words when extraction edit. Default 2."
-    print >> sys.stderr, "        --beta B                    -  Beta value for F-measure. Default 0.5."
-    print >> sys.stderr, "        --ignore_whitespace_casing  -  Ignore edits that only affect whitespace and caseing. Default no."
+    print("Usage: m2scorer.py [OPTIONS] proposed_sentences gold_source", file=sys.stderr)
+    print("where", file=sys.stderr)
+    print("  proposed_sentences   -   system output, sentence per line", file=sys.stderr)
+    print("  source_gold          -   source sentences with gold token edits", file=sys.stderr)
+    print("OPTIONS", file=sys.stderr)
+    print("  -v    --verbose                   -  print verbose output", file=sys.stderr)
+    print("        --very_verbose              -  print lots of verbose output", file=sys.stderr)
+    print("        --max_unchanged_words N     -  Maximum unchanged words when extraction edit. Default 2.", file=sys.stderr)
+    print("        --beta B                    -  Beta value for F-measure. Default 0.5.", file=sys.stderr)
+    print("        --ignore_whitespace_casing  -  Ignore edits that only affect whitespace and caseing. Default no.", file=sys.stderr)
 
 
 
@@ -114,7 +114,7 @@ for o, v in opts:
     elif o == '--ignore_whitespace_casing':
         ignore_whitespace_casing = True
     else:
-        print >> sys.stderr, "Unknown option :", o
+        print("Unknown option :", o, file=sys.stderr)
         print_usage()
         sys.exit(-1)
 
