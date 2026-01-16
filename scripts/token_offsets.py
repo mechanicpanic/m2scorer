@@ -36,7 +36,7 @@ assert len(sys.argv) == 1
 tokenizer = PTBTokenizer()
 sentence = ''
 for line in sys.stdin:
-    line = line.decode("utf8").strip()
+    line = line.strip()
     if line.startswith("S "):
         sentence = line[2:]
         sentence_tok = "S " + ' '.join(tokenizer.tokenize(sentence))

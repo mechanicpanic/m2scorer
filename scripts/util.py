@@ -88,7 +88,7 @@ def paragraphs(lines, is_separator=lambda x : x == '\n', joiner=''.join):
 
 def isASCII(word):
     try:
-        word = word.decode("ascii")
+        word = word
         return True
     except UnicodeEncodeError :
         return False

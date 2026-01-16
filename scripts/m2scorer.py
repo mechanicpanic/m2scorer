@@ -44,7 +44,7 @@ def load_annotation(gold_file):
     fgold = smart_open(gold_file, 'r')
     puffer = fgold.read()
     fgold.close()
-    puffer = puffer.decode('utf8')
+    puffer = puffer
     for item in paragraphs(puffer.splitlines(True)):
         item = item.splitlines(False)
         sentence = [line[2:].strip() for line in item if line.startswith('S ')]
@@ -74,7 +74,7 @@ def load_annotation(gold_file):
             tok_offset += len(this_sentence.split())
             source_sentences.append(this_sentence)
             this_edits = {}
-            for annotator, annotation in annotations.iteritems():
+            for annotator, annotation in annotations.items():
                 this_edits[annotator] = [edit for edit in annotation if edit[0] <= tok_offset and edit[1] <= tok_offset and edit[0] >= 0 and edit[1] >= 0]
             if len(this_edits) == 0:
                 this_edits[0] = []
@@ -131,12 +131,12 @@ source_sentences, gold_edits = load_annotation(gold_file)
 
 # load system hypotheses
 fin = smart_open(system_file, 'r')
-system_sentences = [line.decode("utf8").strip() for line in fin.readlines()]
+system_sentences = [line.strip() for line in fin.readlines()]
 fin.close()
 
 p, r, f1 = levenshtein.batch_multi_pre_rec_f1(system_sentences, source_sentences, gold_edits, max_unchanged_words, beta, ignore_whitespace_casing, verbose, very_verbose)
 
-print "Precision   : %.4f" % p
-print "Recall      : %.4f" % r
-print "F_%.1f       : %.4f" % (beta, f1)
+print("Precision   : %.4f" % p)
+print("Recall      : %.4f" % r)
+print("F_%.1f       : %.4f" % (beta, f1))
 
